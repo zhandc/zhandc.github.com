@@ -1,0 +1,35 @@
+---
+published: false
+status: process
+layout: post
+title: "Test On RMarkdown"
+description: ""
+category: 
+tags: []
+---
+{% include JB/setup %}
+
+## The Normal Distribution
+
+Firstly I will give a normal distribution listed as follows:
+
+$$
+f(x;\mu,\sigma^2) = \frac{1}{\sigma\sqrt{2\pi}} e^{ -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2 }
+$$
+
+Then I try to plot it with R:
+
+```{r block1}
+output <- rnorm(1000, 100, 15);
+```
+```{r block2,  fig.width=8, fig.height=5}
+ggplot2::qplot(output)
+```
+
+## 其他测试,中英文一起上
+```{r}
+summary(cars)
+``` 
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
