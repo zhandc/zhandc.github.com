@@ -23,24 +23,28 @@ $$之后，我们可以在新的低维空间中，训练分类器
 $$
 \min\limits_{z\in \mathbb{R}^m}\frac{\lambda}{2}\|z\|^2 + \sum\limits_{i=1}^{n}\ell(y_i z^\top \hat x_i).
 $$
-在得到分类器系数$z$之后，可以通过$\frac{1}{\sqrt{m}}Rz^*$来重构得到原空间的分类器系数。有大量的工作表明如此重构的分类器能够获取和原空间训练的分类器相当的分类效果。
+在得到分类器系数$z$之后，可以通过
+$$
+\frac{1}{\sqrt{m}}Rz^*
+$$
+来重构得到原空间的分类器系数。有大量的工作表明如此重构的分类器能够获取和原空间训练的分类器相当的分类效果。
 
-然而问题是如此重构的分类器$\hat w$和原空间的训练得到的分类器$w_*$存在着较大的差异。该工作的重心在于探讨是否存在一种从Random Projection空间下训练的分类器$z_*$来重构$w_*$的方法？
+然而问题是如此重构的分类器$\hat w$和原空间的训练得到的分类器$$w_*$$存在着较大的差异。该工作的重心在于探讨是否存在一种从Random Projection空间下训练的分类器$$z_*$$来重构$$w_*$$的方法？
 
 答案明显是positive的，不然就没法讲下去了。考虑如下形式的primal问题（P1）
 $$
-\min\limits_{w\in \mathcal{R}^d}\frac{\lambda}{2}\|w\|^2+\sum\limits_{i=1}^n\ell (y_ix_i^\topw),
+\min\limits_{w\in \mathcal{R}^d}\frac{\lambda}{2}\|w\|^2+\sum\limits_{i=1}^n\ell (y_ix_i^\top w),
 $$
 where $\ell (z)$ can be written as 
 $$
 \ell(z) =\max\limits_{\alpha \in \Omega}\alpha z- \ell_* (\alpha),
 $$
-$\ell_*(\alpha)$ is the convex conjugate of $\ell(z)$.
+$$\ell_* (\alpha) $$ is the convex conjugate of $$\ell(z)$$.
 Then the dual problem can be rewritten as （P2）:
 $$
 \max\limits_{\alpha \in \Omega} - \sum\limits_{i=1}^{n}\ell_*(\alpha_i) - \frac{1}{2\lambda}\alpha^\top G\alpha,
 $$
-where $G=D(y)X^\topXD(y)$, $D(y)$ is the $Diag(y)$ and we have 
+where $$G=D(y)X^\top XD(y)$$, $$D(y)$$ is the $$Diag(y)$$ and we have  
 $$
 w_*=-\frac{1}{\lambda}XD(y)\alpha_*,
 $$
